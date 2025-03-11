@@ -1,0 +1,100 @@
+// @ts-check
+import eslintConfigPrettier from "eslint-config-prettier";
+import withNuxt from "./.nuxt/eslint.config.mjs";
+
+export default withNuxt([
+  {
+    ignores: [
+      "dist",
+      "node_modules",
+      ".nuxt",
+      ".output",
+      ".vscode",
+      ".github",
+      // vuexy
+      "src/app-core/public/**/*",
+      "*.d.ts",
+      "*.json",
+      "lefthook.yml",
+      ".env.example.prod",
+      ".env.example.stage",
+    ],
+  },
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          varsIgnorePattern: "^_",
+          argsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+      "no-console": "warn",
+      "no-debugger": "warn",
+
+      // -- Vue Rules --
+      "vue/no-multiple-template-root": "off", // vue 3 template can have multiple root
+      "vue/component-api-style": "error",
+      "vue/component-name-in-template-casing": [
+        "error",
+        "PascalCase",
+        {
+          registeredComponentsOnly: false,
+          ignores: ["/^swiper-/"],
+        },
+      ],
+      "vue/multi-word-component-names": [
+        "off",
+        {
+          ignores: ["**/pages/**/*"],
+        },
+      ],
+      "vue/custom-event-name-casing": [
+        "error",
+        "camelCase",
+        {
+          ignores: ["/^(click):[a-z]+((d)|([A-Z0-9][a-z0-9]+))*([A-Z])?/"],
+        },
+      ],
+      "vue/camelcase": "error",
+
+      "vue/html-comment-content-newline": "error",
+      "vue/match-component-file-name": "error",
+      "vue/no-child-content": "error",
+      "vue/require-default-prop": "error",
+      "vue/no-empty-component-block": "error",
+      "vue/padding-line-between-blocks": "error",
+
+      "vue/prefer-separate-static-class": "error",
+      "vue/prefer-true-attribute-shorthand": "error",
+      "vue/v-on-function-call": "error",
+      "vue/no-useless-mustaches": "error",
+      "vue/no-useless-v-bind": "error",
+      "vue/no-template-target-blank": "error",
+      "vue/valid-v-slot": [
+        "error",
+        {
+          allowModifiers: true,
+        },
+      ],
+
+      "vue/define-macros-order": "error",
+      "vue/block-order": [
+        "error",
+        {
+          order: ["script", "template", "style"],
+        },
+      ],
+
+      // -- Vue Rules --
+    },
+    settings: {
+      "import/resolver": {
+        node: true,
+        typescript: {},
+      },
+    },
+  },
+  eslintConfigPrettier,
+]);

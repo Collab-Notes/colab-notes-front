@@ -1,0 +1,17 @@
+# git hooks configuration
+# -> https://lefthook.dev/configuration/
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: pnpm eslint {staged_files} --max-warnings 0 --config eslint.config.js --no-warn-ignored
+    format:
+      run: pnpm prettier --write {staged_files}
+      stage_fixed: true
+
+pre-push:
+  parallel: true
+  commands:
+    build:
+      run: pnpm run build

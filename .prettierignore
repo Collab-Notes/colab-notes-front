@@ -1,0 +1,19 @@
+# Auto generated
+node_modules
+dist
+.nuxt
+.output
+
+#  specific vuexy files
+src/app-core/public
+
+# others
+.vscode
+.github
+.gitignore
+pnpm-lock.yaml
+*.png
+*.svg
+*.jpg
+*.jpeg
+.prettierignore
