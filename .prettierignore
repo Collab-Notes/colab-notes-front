@@ -6,6 +6,7 @@ dist
 
 #  specific vuexy files
 src/app-core/public
+src/vendor/sakai-vue
 
 # others
 .vscode

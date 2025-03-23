@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   srcDir: "./src",
 
   extends: [
+    "src/vendor/sakai-vue",
     // DDD architecture / folder structure with nuxt layers
     "src/features/auth",
   ],
@@ -54,13 +55,13 @@ export default defineNuxtConfig({
   /** path aliases for custom DDD architecture  */
   dir: {
     // core
-    middleware: "app-core/middleware",
-    plugins: "app-core/plugins",
-    layouts: "app-core/layouts",
-    public: "app-core/public",
+    middleware: "core/middleware",
+    plugins: "core/plugins",
+    layouts: "core/layouts",
+    public: "core/public",
 
     // commom
-    assets: "common/assets",
+    assets: "core/assets",
   },
   serverDir: "common/server",
 

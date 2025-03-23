@@ -11,8 +11,8 @@ export default withNuxt([
       ".output",
       ".vscode",
       ".github",
-      // vuexy
       "src/app-core/public/**/*",
+      "src/vendor/sakai-vue/**/*",
       "*.d.ts",
       "*.json",
       "lefthook.yml",
@@ -68,7 +68,6 @@ export default withNuxt([
 
       "vue/prefer-separate-static-class": "error",
       "vue/prefer-true-attribute-shorthand": "error",
-      "vue/v-on-function-call": "error",
       "vue/no-useless-mustaches": "error",
       "vue/no-useless-v-bind": "error",
       "vue/no-template-target-blank": "error",
