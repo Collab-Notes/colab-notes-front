@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     "src/vendor/sakai-vue",
     // DDD architecture / folder structure with nuxt layers
     "src/features/auth",
+    "src/features/vault",
   ],
 
   components: {
@@ -48,7 +49,7 @@ export default defineNuxtConfig({
     dirs: [
       "./common/composables/**/*.ts",
       "./common/utils/**/*.ts",
-      "./features/*/stores/*.ts",
+      "./common/stores/*.ts",
     ],
   },
 
