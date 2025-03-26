@@ -5,7 +5,23 @@ import Aura from "@primevue/themes/aura";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   vite: {
+    resolve: {
+      alias: {
+        "#template": absPath("."),
+      },
+    },
     plugins: [tailwindcss()],
+  },
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        baseUrl: absPath("."),
+        paths: {
+          "#template/*": ["./*"],
+        },
+      },
+    },
   },
 
   primevue: {
@@ -19,6 +35,7 @@ export default defineNuxtConfig({
     },
   },
 
+  components: [{ path: "components", pathPrefix: false, }],
   css: [absPath("./assets/tailwind.css"), absPath("./assets/styles.scss")],
 
   modules: ["@primevue/nuxt-module"],

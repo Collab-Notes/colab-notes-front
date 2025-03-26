@@ -233,7 +233,7 @@ import AppLayout from './AppLayout.vue';
       >. Then remove this line:
     </p>
     <pre class="app-code">
-<code>import { useLayout } from '@/layout/composables/layout';</code></pre>
+<code>import { useLayout } from '@/layouts/composables/layout';</code></pre>
 
     <p class="text-lg mb-4">As a final step, copy the following folders:</p>
     <ul class="leading-normal list-disc pl-8 text-lg mb-4">

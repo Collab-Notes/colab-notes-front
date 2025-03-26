@@ -1,5 +1,5 @@
 <script setup>
-import FloatingConfigurator from "@/components/FloatingConfigurator.vue";
+import FloatingConfigurator from "#template/components/FloatingConfigurator.vue";
 </script>
 
 <template>
@@ -14,8 +14,8 @@ import FloatingConfigurator from "@/components/FloatingConfigurator.vue";
           padding: 0.3rem;
           background: linear-gradient(
             180deg,
-            rgba(233, 30, 99, 0.4) 10%,
-            rgba(33, 150, 243, 0) 30%
+            rgba(247, 149, 48, 0.4) 10%,
+            rgba(247, 149, 48, 0) 30%
           );
         "
       >
@@ -25,24 +25,23 @@ import FloatingConfigurator from "@/components/FloatingConfigurator.vue";
         >
           <div class="gap-4 flex flex-col items-center">
             <div
-              class="flex justify-center items-center border-2 border-pink-500 rounded-full"
-              style="height: 3.2rem; width: 3.2rem"
+              class="flex justify-center items-center border-2 border-orange-500 rounded-full"
+              style="width: 3.2rem; height: 3.2rem"
             >
-              <i
-                class="pi pi-fw pi-exclamation-circle !text-2xl text-pink-500"
-              ></i>
+              <i class="text-orange-500 pi pi-fw pi-lock !text-2xl"></i>
             </div>
             <h1
-              class="text-surface-900 dark:text-surface-0 font-bold text-5xl mb-2"
+              class="text-surface-900 dark:text-surface-0 font-bold text-4xl lg:text-5xl mb-2"
             >
-              Error Occured
+              Access Denied
             </h1>
             <span class="text-muted-color mb-8"
-              >Requested resource is not available.</span
+              >You do not have the necessary permisions. Please contact
+              admins.</span
             >
             <img
-              src="/demo/images/error/asset-error.svg"
-              alt="Error"
+              src="/demo/images/access/asset-access.svg"
+              alt="Access denied"
               class="mb-8"
               width="80%"
             />
@@ -51,7 +50,7 @@ import FloatingConfigurator from "@/components/FloatingConfigurator.vue";
                 as="router-link"
                 label="Go to Dashboard"
                 to="/"
-                severity="danger"
+                severity="warn"
               />
             </div>
           </div>

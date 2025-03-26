@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     // DDD architecture / folder structure with nuxt layers
     "src/features/auth",
     "src/features/vault",
+    "src/features/home",
   ],
 
   components: {
