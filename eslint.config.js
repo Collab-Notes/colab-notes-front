@@ -11,8 +11,12 @@ export default withNuxt([
       ".output",
       ".vscode",
       ".github",
+      // vuexy
       "src/app-core/public/**/*",
-      "src/vendor/sakai-vue/**/*",
+      "src/vendor/materio/plugins/iconify/**/*",
+      "src/vendor/materio/@core/**/*",
+      "src/vendor/materio/@layouts/**/*",
+      // vuexy
       "*.d.ts",
       "*.json",
       "lefthook.yml",
@@ -33,8 +37,18 @@ export default withNuxt([
       "no-console": "warn",
       "no-debugger": "warn",
 
+      // theme vuexy default configs (might be useful?)
+      "no-restricted-imports": [
+        "error",
+        "vuetify/components",
+        {
+          name: "vue3-apexcharts",
+          message: "apexcharts are auto imported",
+        },
+      ],
+
+      // "@typescript-eslint/consistent-type-imports": "error",
       // -- Vue Rules --
-      "vue/no-multiple-template-root": "off", // vue 3 template can have multiple root
       "vue/component-api-style": "error",
       "vue/component-name-in-template-casing": [
         "error",
@@ -85,7 +99,7 @@ export default withNuxt([
           order: ["script", "template", "style"],
         },
       ],
-
+      "vue/no-v-html": "off",
       // -- Vue Rules --
     },
     settings: {

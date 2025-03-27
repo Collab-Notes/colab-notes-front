@@ -5,8 +5,11 @@ dist
 .output
 
 #  specific vuexy files
+src/vendor/materio/@core
+src/vendor/materio/@layouts
+src/vendor/materio/plugins/iconify/*
+src/vendor/materio/plugins/vuetify/*
 src/app-core/public
-src/vendor/sakai-vue
 
 # others
 .vscode

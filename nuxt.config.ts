@@ -28,9 +28,11 @@ export default defineNuxtConfig({
   srcDir: "./src",
 
   extends: [
-    "src/vendor/sakai-vue",
+    "src/vendor/materio",
     // DDD architecture / folder structure with nuxt layers
     "src/features/auth",
+    "src/features/vault",
+    "src/features/home",
   ],
 
   components: {
@@ -48,25 +50,31 @@ export default defineNuxtConfig({
     dirs: [
       "./common/composables/**/*.ts",
       "./common/utils/**/*.ts",
-      "./features/*/stores/*.ts",
+      "./common/stores/*.ts",
     ],
   },
 
   /** path aliases for custom DDD architecture  */
   dir: {
-    // core
-    middleware: "core/middleware",
-    plugins: "core/plugins",
-    layouts: "core/layouts",
-    public: "core/public",
+    // app-core
+    middleware: "app-core/middleware",
+    plugins: "app-core/plugins",
+    layouts: "app-core/layouts",
+    public: "app-core/public",
 
     // commom
-    assets: "core/assets",
+    assets: "app-core/assets",
   },
   serverDir: "common/server",
 
   devtools: { enabled: true },
   compatibilityDate: "2025-03-10",
 
-  modules: ["@nuxt/eslint", "@pinia/nuxt", "@vee-validate/nuxt"],
+  modules: [
+    "@nuxt/eslint",
+    "@pinia/nuxt",
+    "@vee-validate/nuxt",
+    "@vueuse/nuxt",
+    "@nuxtjs/device",
+  ],
 });
