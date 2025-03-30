@@ -1,9 +1,14 @@
 import { fileURLToPath } from "node:url";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {},
+  },
+
+  supabase: {
+    redirect: false,
   },
 
   app: {
@@ -89,7 +94,11 @@ export default defineNuxtConfig({
         "~": fileURLToPath(new URL("./src", import.meta.url)),
       },
     },
+
+    plugins: [tailwindcss()],
   },
+
+  css: [fileURLToPath(new URL("./src/app-core/tailwind.css", import.meta.url))],
 
   devtools: { enabled: true },
   compatibilityDate: "2025-03-10",
