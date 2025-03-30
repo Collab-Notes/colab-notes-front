@@ -1,5 +1,31 @@
 <script setup lang="ts">
-import avatar1 from "@images/avatars/avatar-1.png";
+const { logout } = useSupabaseAuthLogout();
+const authStore = useAuthStore();
+
+const avatarUrl = `https://ui-avatars.com/api/?name=${authStore.userData?.name ?? "Nuevo Usuario"}&background=random`;
+type NavigationItem = {
+  title: string;
+  to: string;
+  icon: string;
+};
+
+const navigation: NavigationItem[] = [
+  {
+    title: "Perfil",
+    to: "/perfil",
+    icon: "ri-user-line",
+  },
+  {
+    title: "Configuración",
+    to: "/configuracion",
+    icon: "ri-settings-4-line",
+  },
+  {
+    title: "Ayuda",
+    to: "/ayuda",
+    icon: "ri-question-line",
+  },
+];
 </script>
 
 <template>
@@ -12,7 +38,7 @@ import avatar1 from "@images/avatars/avatar-1.png";
     bordered
   >
     <VAvatar class="cursor-pointer" color="primary" variant="tonal">
-      <VImg :src="avatar1" />
+      <VImg :src="avatarUrl" />
 
       <!-- SECTION Menu -->
       <VMenu activator="parent" width="230" location="bottom end" offset="14px">
@@ -29,69 +55,41 @@ import avatar1 from "@images/avatars/avatar-1.png";
                   color="success"
                 >
                   <VAvatar color="primary" variant="tonal">
-                    <VImg :src="avatar1" />
+                    <VImg :src="avatarUrl" />
                   </VAvatar>
                 </VBadge>
               </VListItemAction>
             </template>
 
             <VListItemTitle class="font-weight-semibold">
-              John Doe
+              {{ authStore.userData?.name ?? "Nuevo Usuario" }}
             </VListItemTitle>
-            <VListItemSubtitle>Admin</VListItemSubtitle>
+            <VListItemSubtitle>
+              {{
+                authStore.userData?.email ?? "Nuevo Usuario"
+              }}</VListItemSubtitle
+            >
           </VListItem>
           <VDivider class="my-2" />
 
-          <!-- 👉 Profile -->
-          <VListItem link>
+          <VListItem v-for="(item, index) in navigation" :key="index" link>
             <template #prepend>
-              <VIcon class="me-2" icon="ri-user-line" size="22" />
+              <VIcon class="me-2" :icon="item.icon" size="22" />
             </template>
 
-            <VListItemTitle>Profile</VListItemTitle>
-          </VListItem>
-
-          <!-- 👉 Settings -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon class="me-2" icon="ri-settings-4-line" size="22" />
-            </template>
-
-            <VListItemTitle>Settings</VListItemTitle>
-          </VListItem>
-
-          <!-- 👉 Pricing -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon
-                class="me-2"
-                icon="ri-money-dollar-circle-line"
-                size="22"
-              />
-            </template>
-
-            <VListItemTitle>Pricing</VListItemTitle>
-          </VListItem>
-
-          <!-- 👉 FAQ -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon class="me-2" icon="ri-question-line" size="22" />
-            </template>
-
-            <VListItemTitle>FAQ</VListItemTitle>
+            <VListItemTitle>{{ item.title }}</VListItemTitle>
           </VListItem>
 
           <!-- Divider -->
           <VDivider class="my-2" />
 
           <!-- 👉 Logout -->
-          <VListItem to="/login">
+          <VListItem @click="logout">
             <template #prepend>
               <VIcon class="me-2" icon="ri-logout-box-r-line" size="22" />
             </template>
 
-            <VListItemTitle>Logout</VListItemTitle>
+            <VListItemTitle>Cerrar sesión</VListItemTitle>
           </VListItem>
         </VList>
       </VMenu>

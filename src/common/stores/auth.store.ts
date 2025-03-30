@@ -13,7 +13,7 @@ export const useAuthStore = defineStore("auth", () => {
           {
             id: "note-1",
             title: "Meeting Notes",
-            created_at: new Date("2024-03-08T15:00:00Z"),
+            created_at: "2024-03-08T15:00:00Z",
           },
         ],
         collaborators: [

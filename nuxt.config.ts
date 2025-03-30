@@ -1,8 +1,16 @@
+import { fileURLToPath } from "node:url";
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {},
   },
+
+  supabase: {
+    redirect: false,
+  },
+
   app: {
     head: {
       titleTemplate: "%s | Colab Notes",
@@ -65,7 +73,32 @@ export default defineNuxtConfig({
     // commom
     assets: "app-core/assets",
   },
+
+  // Only for common server utils
   serverDir: "common/server",
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        baseUrl: fileURLToPath(new URL("./src", import.meta.url)),
+        paths: {
+          "~/*": ["./*"],
+        },
+      },
+    },
+  },
+
+  vite: {
+    resolve: {
+      alias: {
+        "~": fileURLToPath(new URL("./src", import.meta.url)),
+      },
+    },
+
+    plugins: [tailwindcss()],
+  },
+
+  css: [fileURLToPath(new URL("./src/app-core/tailwind.css", import.meta.url))],
 
   devtools: { enabled: true },
   compatibilityDate: "2025-03-10",
@@ -76,5 +109,6 @@ export default defineNuxtConfig({
     "@vee-validate/nuxt",
     "@vueuse/nuxt",
     "@nuxtjs/device",
+    "@nuxtjs/supabase",
   ],
 });

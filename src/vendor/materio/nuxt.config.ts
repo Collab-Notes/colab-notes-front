@@ -1,27 +1,14 @@
 import { fileURLToPath } from "node:url";
-import tailwindcss from "@tailwindcss/vite";
 import vuetify from "vite-plugin-vuetify";
 import svgLoader from "vite-svg-loader";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  typescript: {
-    tsConfig: {
-      compilerOptions: {
-        baseUrl: absPath("."),
-        paths: {
-          "#template/*": ["./*"],
-        },
-      },
-    },
-  },
-
   // css: [absPath("./assets/tailwind.css")],
 
   css: [
     "@core/scss/template/index.scss",
     absPath("./plugins/iconify/icons.css"),
-    "@styles/styles.scss",
     "@layouts/styles/index.scss",
   ],
 
@@ -74,19 +61,24 @@ export default defineNuxtConfig({
     },
   },
 
-  tsConfig: {
-    compilerOptions: {
-      paths: {
-        // folders
-        "@layouts/*": [absPath("./@layouts/*")],
-        "@layouts": [absPath("./@layouts")],
-        "@core/*": [absPath("./@core/*")],
-        "@core": [absPath("./@core")],
-        "@images/*": [absPath("./assets/images/*")],
-        "@styles/*": [absPath("./styles/*")],
-        "#template*": [absPath("../*")],
-        // files
-        "@configured-variables": [absPath("./styles/variables/_template.scss")],
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          // folders
+          "#template/*": [absPath("./*")],
+          "@layouts/*": [absPath("./@layouts/*")],
+          "@layouts": [absPath("./@layouts")],
+          "@core/*": [absPath("./@core/*")],
+          "@core": [absPath("./@core")],
+          "@images/*": [absPath("./assets/images/*")],
+          "@styles/*": [absPath("./styles/*")],
+          "#template*": [absPath("../*")],
+          // files
+          "@configured-variables": [
+            absPath("./styles/variables/_template.scss"),
+          ],
+        },
       },
     },
   },
@@ -130,7 +122,6 @@ export default defineNuxtConfig({
           configFile: absPath("./styles/variables/_vuetify.scss"),
         },
       }),
-      tailwindcss(),
     ],
   },
 
