@@ -20,7 +20,11 @@ const [terms, termsAttrs] = defineField("terms", vuetifyInputConfig);
 const { register, error, status } = useSupabaseAuthRegister();
 
 const handleSubmit = validateFormData(async (values) => {
-  await register(values.email, values.password);
+  await register({
+    email: values.email,
+    password: values.password,
+    name: values.username,
+  });
 });
 </script>
 

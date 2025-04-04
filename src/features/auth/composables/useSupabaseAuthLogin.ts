@@ -1,10 +1,13 @@
 import type { AsyncDataRequestStatus } from "nuxt/app";
+// import { AuthRepository } from "../repository/auth.repository";
 
 /**
  * provides authentication actions for user registration, login, and logout
  */
 export function useSupabaseAuthLogin() {
   const supabase = useSupabaseClient();
+  // const { $supabaseClient } = useNuxtApp();
+  // const authRepo = new AuthRepository($supabaseClient);
 
   const error = ref<string | null>(null);
   const status = ref<AsyncDataRequestStatus>("idle");
@@ -14,12 +17,17 @@ export function useSupabaseAuthLogin() {
 
     status.value = "pending";
 
-    const { error: supabaseError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { error: supabaseError, data } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    //supabase.from("users").select("*").eq("email", email).then((response) => {
+    if (data?.user) {
+      // TODO: implement store to save user data
+      // const userData = authRepo.getUserById(data.user.id);
+      await navigateTo("/");
+    }
 
     if (supabaseError) {
       status.value = "error";
