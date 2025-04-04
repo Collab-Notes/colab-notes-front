@@ -22,7 +22,7 @@ export function useSupabaseAuthRegister() {
 
     const siteUrl = useGetSiteUrl();
 
-    // TODO: for simplicity, email verification is not un-activated
+    // TODO: for simplicity, email verification is not activated
     const { error: supabaseError, data } = await $supabaseClient.auth.signUp({
       email: newUser.email,
       password: newUser.password,
