@@ -6,7 +6,7 @@ export function useSupabaseAuthLogout() {
 
   const logout = async () => {
     await supabase.auth.signOut();
-    await navigateTo("/auth/login");
+    await navigateTo("/login");
   };
 
   return {
